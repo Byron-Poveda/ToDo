@@ -1,0 +1,28 @@
+concurrent = 1
+check_interval = 0
+shutdown_timeout = 0
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "DESKTOP-ASA7NHB"
+  url = "http://137.184.76.191"
+  id = 9
+  token = "glrt-GQE4rtXZGbm-vZJ1vcb6"
+  token_obtained_at = 2023-06-15T19:35:17Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+  shell = "pwsh"
+
+[[runners]]
+  name = "Runner 2.0"
+  url = "http://137.184.76.191"
+  id = 11
+  token = "glrt-gGB_nCaP6uzyx_1bZtdf"
+  token_obtained_at = 2023-06-15T19:42:26Z
+  token_expires_at = 0001-01-01T00:00:00Z
+  executor = "shell"
+  shell = "pwsh"
+  [runners.cache]
+    MaxUploadedArchiveSize = 0
