@@ -31,14 +31,24 @@
           class="bg-cyan-100 py-2 px-3 rounded-md hover:bg-blue-200 duration-700"
           @click="filter = 'all'"
         >
-          <p class="font-semibold">All Tasks</p>
+          <p class="font-semibold">
+            All Tasks <i class="ri-survey-fill ri-lg text-black"></i>
+          </p>
         </button>
         <button
           class="bg-cyan-100 py-2 px-3 rounded-md hover:bg-blue-200 duration-700"
           @click="filter = 'favs'"
         >
           <p class="font-semibold">
-            Favs Tasks <i class="ri-heart-fill ri-xl text-red-500"></i>
+            Favs Tasks <i class="ri-heart-fill ri-lg text-red-500"></i>
+          </p>
+        </button>
+        <button
+          class="bg-cyan-100 py-2 px-3 rounded-md hover:bg-blue-200 duration-700"
+          @click="filter = 'checkbox'"
+        >
+          <p class="font-semibold">
+            Checkbox Tasks <i class="ri-checkbox-line ri-lg text-blue-500"></i>
           </p>
         </button>
       </div>
@@ -66,11 +76,28 @@
     >
       <h1 class="text-white font-bold text-xl">
         You have {{ taskStore.countFavs }}
-        <span class="text-red-300">favs</span> tasks
+        <span class="text-red-300">Favs</span> tasks
       </h1>
       <!-- uso del componente importado (Coloca los item segun los elementos del array) y enviando props al archivo (ListToDo.vue) -->
       <li
         v-for="(task, index) in taskStore.favs"
+        :key="index"
+        class="tasks__item bg-stone-900 rounded-md w-100 h-12 relative"
+      >
+        <ListToDo :task="task" />
+      </li>
+    </ul>
+    <ul
+      class="tasks__list gap-4 flex flex-col text-right"
+      v-if="filter === 'checkbox'"
+    >
+      <h1 class="text-white font-bold text-xl">
+        You have {{ taskStore.countCheckbox }}
+        <span class="text-blue-500">Checkbox</span> tasks
+      </h1>
+      <!-- uso del componente importado (Coloca los item segun los elementos del array) y enviando props al archivo (ListToDo.vue) -->
+      <li
+        v-for="(task, index) in taskStore.checkbox"
         :key="index"
         class="tasks__item bg-stone-900 rounded-md w-100 h-12 relative"
       >
@@ -134,9 +161,11 @@ export default {
         title: inputValue.value,
         id: cont.value,
         idFav: false,
+        idCheckbox: false,
       });
       // devolviendo el input a si estado natural
       inputValue.value = '';
+      console.log(taskStore.tasks);
       return cont.value++;
     };
     // retorno de todas las varibales incluendo las funciones de flecha o normales

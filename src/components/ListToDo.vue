@@ -1,7 +1,16 @@
 <template>
   <div class="task flex w-full h-12 py-2 px-2 items-center justify-between">
     <div class="flex gap-2 items-center">
-      <input type="checkbox" class="task__checkbox w-4 h-4" />
+      <button
+        @click="taskStore.toggleCheckbox(task.id)"
+        class="w-4 h-4 duration-700 flex items-center"
+        id="idCheckbox"
+        :style="`background-color:${
+          task.idCheckbox === true ? 'rgb(23 68 688)' : 'white'
+        }`"
+      >
+        <i class="ri-check-fill ri-1x text-white"></i>
+      </button>
       <!-- mensaje q saca del array -->
       <p class="task__description text-white text-xl/8 font-semibold">
         {{ task.title }}
@@ -21,7 +30,7 @@
       </button>
       <button @click="taskStore.toggleFav(task.id)" id="idBtnFavs">
         <i
-          :style="`color:${task.isFav === true ? 'rgb(239 68 68)' : 'white'}`"
+          :style="`color:${task.idFav === true ? 'rgb(239 68 68)' : 'white'}`"
           class="ri-heart-fill ri-lg duration-500"
         ></i>
       </button>
