@@ -1,6 +1,13 @@
 <template>
-  <div class="task flex w-full h-12 py-2 px-2 items-center justify-between">
-    <div class="flex gap-2 items-center">
+  <input
+    type="text"
+    class="task flex ml-10 h-12 py-2 items-center justify-between bg-transparent absolute text-white text-xl/8 font-semibold focus:outline-none border-transparent shadow-transparent"
+    v-model="task.title"
+    @keyup.enter="$refs.inputTask.blur()"
+    ref="inputTask"
+  />
+  <div class="flex items-center w-full justify-between px-3">
+    <div class="flex items-center gap-2">
       <button
         @click="taskStore.toggleCheckbox(task.id)"
         class="w-4 h-4 duration-700 flex items-center"
@@ -12,9 +19,6 @@
         <i class="ri-check-fill ri-1x text-white"></i>
       </button>
       <!-- mensaje q saca del array -->
-      <p class="task__description text-white text-xl/8 font-semibold">
-        {{ task.title }}
-      </p>
     </div>
     <!-- boton q toma el index del elemento al q se la da click y se la pasa a la funcion verify -->
     <nav>

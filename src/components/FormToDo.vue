@@ -65,7 +65,7 @@
       <li
         v-for="(task, index) in taskStore.tasks"
         :key="index"
-        class="tasks__item bg-stone-900 rounded-md w-full h-12 relative"
+        class="tasks__item bg-stone-900 rounded-md w-full h-12 relative items-center flex"
       >
         <ListToDo :task="task" />
       </li>
@@ -82,7 +82,7 @@
       <li
         v-for="(task, index) in taskStore.favs"
         :key="index"
-        class="tasks__item bg-stone-900 rounded-md w-100 h-12 relative"
+        class="tasks__item bg-stone-900 rounded-md w-full h-12 relative items-center flex"
       >
         <ListToDo :task="task" />
       </li>
@@ -99,7 +99,7 @@
       <li
         v-for="(task, index) in taskStore.checkbox"
         :key="index"
-        class="tasks__item bg-stone-900 rounded-md w-100 h-12 relative"
+        class="tasks__item bg-stone-900 rounded-md w-full h-12 relative items-center flex"
       >
         <ListToDo :task="task" />
       </li>
